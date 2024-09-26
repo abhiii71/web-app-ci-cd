@@ -22,10 +22,10 @@ jobs:
         run: echo "No tests defined"
 
       - name: Build Docker image
-        run: docker build -t simple-node-app ./app  
+        run: docker build -t web-app-ci-cd ./app  
 
       - name: Log in to DockerHub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
       - name: Push image to DockerHub
-        run: docker tag simple-node-app:latest ${{ secrets.DOCKER_USERNAME }}/simple-node-app:latest && docker push ${{ secrets.DOCKER_USERNAME }}/simple-node-app:latest
+        run: docker tag web-app-ci-cd:latest ${{ secrets.DOCKER_USERNAME }}/simple-node-app:latest && docker push ${{ secrets.DOCKER_USERNAME }}/simple-node-app:latest
