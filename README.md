@@ -31,32 +31,40 @@ To build the Docker image locally:
 
 ```bash
 docker build -t web-app-ci-cd ./app
+```
 
 To run the Docker container:
 
 ```bash
 docker run -d -p 3000:3000 web-app-ci-cd
+```
 
-### GitHub Actions Setup
-GitHub Actions Workflow: The .github/workflows/ci.yml file defines the CI/CD pipeline for building, testing, and deploying the application.
+## GitHub Actions Setup
 
-CI Configuration: The workflow is triggered on every push and pull request to the master branch. It checks out the code, builds the Docker image, and runs tests.
+### GitHub Actions Workflow
 
-### Docker Setup
-Dockerfile
+The `.github/workflows/ci.yml` file defines the CI/CD pipeline for building, testing, and deploying the application.
+
+### CI Configuration
+
+The workflow is triggered on every push and pull request to the `main` branch. It checks out the code, builds the Docker image, and runs tests.
+
+## Docker Setup
+
+### Dockerfile
+
 A Dockerfile is included in the repository to define the environment for the Node.js application. Ensure it has the necessary instructions to set up Node.js, install dependencies, and define the command to run the application.
 
-### Configuring Docker Credentials
+## Configuring Docker Credentials
+
 To push the Docker image to Docker Hub, you need to configure Docker credentials in GitHub Actions. This is done by creating GitHub Secrets for your Docker Hub username and password.
 
-### CI/CD Pipeline
-CI/CD Pipeline
+## CI/CD Pipeline
+
 The CI/CD pipeline defined in the GitHub Actions workflow includes the following stages:
 
-Checkout Code: Fetches the code from the GitHub repository.
-Build Docker Image: Builds the application into a Docker image.
-Log in to Docker Hub: Authenticates to Docker Hub using the configured secrets.
-Push Docker Image: Pushes the built Docker image to Docker Hub.
-Run Tests: Executes tests to ensure the application is working as expected.
-
-
+- **Checkout Code**: Fetches the code from the GitHub repository.
+- **Build Docker Image**: Builds the application into a Docker image.
+- **Log in to Docker Hub**: Authenticates to Docker Hub using the configured secrets.
+- **Push Docker Image**: Pushes the built Docker image to Docker Hub.
+- **Run Tests**: Executes tests to ensure the application is working as expected.
